@@ -11,7 +11,7 @@ export class ProductsListComponent implements OnInit {
   imageWidth: number = 50
   imageMargin: number = 10
   showImage: boolean = true
-  _listFilter: string = 'cart'
+  _listFilter: string;
   get listFilter(): string {
     return this._listFilter
   }
@@ -42,7 +42,6 @@ export class ProductsListComponent implements OnInit {
   }]
   constructor() {
     this.filteredProducts = this.products
-    this.listFilter = 'cart'
   }
   performFilter(filterBy: string): IProduct[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -53,7 +52,9 @@ export class ProductsListComponent implements OnInit {
   toggleImage(): void {
     this.showImage = !this.showImage
   }
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product list: ' + message
+  }
   ngOnInit(): void {
-    console.log('yo')
   }
 }
